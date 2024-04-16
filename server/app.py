@@ -92,3 +92,22 @@ class PlaylistByID(Resource):
             return {"message": "Playlist deleted successfully."}, 204
         else: 
             return {"error": "Playlist not found."}, 404
+        
+class PlaylistSong(Resource):
+    def post(self, id):
+
+        request_json = request.get_json()
+        song_id = request_json.get('song_id')
+
+        try:
+            playlist = Playlist.query.filter_by(id=id).first()
+            song = Song.query.filter_by(id=song_id).first()
+
+            playlist.songs.append(song)
+            db.session.commit()
+            return {"message": "Song successfully added to playlist"}, 201
+        
+        except IntegrityError:
+            return {'error': '404 Playlist or Song not found'}, 404
+
+        

@@ -124,3 +124,28 @@ class PlaylistSongByID(Resource):
 
         except IntegrityError:
             return {'error': '404 Playlist or Song not found'}, 404        
+        
+class Signup(Resource):
+    def post(self):
+        request_json = request.get_json()
+
+        first_name = request_json.get('firstName')
+        last_name= request_json.get('lastName')
+        username = request_json.get('username')
+        password = request_json.get('password')
+
+        user = User(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+        )
+
+        user.password_hash = password
+
+        try:
+            db.session.add(user)
+            db.session.commit()
+            session['user_id'] = user.id
+            return user.to_dict(), 201
+        except IntegrityError:
+            return {'error': '422 Unprocessable Entity'}, 422        

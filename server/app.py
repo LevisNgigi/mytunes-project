@@ -65,3 +65,8 @@ class Playlists(Resource):
         
         except IntegrityError:
             return {'error': '422 Unprocessable Entity'}, 422
+
+class PlaylistByID(Resource):
+    def get(self, id):
+        playlist = Playlist.query.filter_by(id=id).first().to_dict()
+        return make_response(playlist, 200)

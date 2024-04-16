@@ -70,3 +70,16 @@ class PlaylistByID(Resource):
     def get(self, id):
         playlist = Playlist.query.filter_by(id=id).first().to_dict()
         return make_response(playlist, 200)
+    
+    def patch(self, id):
+        playlist = Playlist.query.filter_by(id=id).first()
+
+        request_json = request.get_json()
+
+        for attr in request_json:
+            setattr(playlist, attr, request_json[attr])
+
+        db.session.add(playlist)
+        db.session.commit()
+
+        return make_response(playlist.to_dict(), 200)

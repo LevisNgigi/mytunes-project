@@ -28,3 +28,4 @@ class Music(Resource):
         spotify_id= request_json.get('spotifyId')
         image_url = request_json.get('imageUrl')
         genres = request_json.get('genres')       
+        

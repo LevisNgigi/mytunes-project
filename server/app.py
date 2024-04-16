@@ -110,4 +110,17 @@ class PlaylistSong(Resource):
         except IntegrityError:
             return {'error': '404 Playlist or Song not found'}, 404
 
-        
+
+class PlaylistSongByID(Resource):    
+    def delete(self, songId, id):
+
+        try:
+            playlist = Playlist.query.filter_by(id=id).first()
+            song = Song.query.filter_by(id=songId).first()
+
+            playlist.songs.remove(song)
+            db.session.commit()
+            return {'message': 'Song deleted from playlist'}, 204
+
+        except IntegrityError:
+            return {'error': '404 Playlist or Song not found'}, 404        

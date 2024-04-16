@@ -48,3 +48,20 @@ class Playlists(Resource):
     def get(self):
         playlists = [playlist.to_dict() for playlist in Playlist.query.all()]
         return make_response(playlists, 200)        
+    
+    def post(self):
+        request_json = request.get_json()
+
+        name = request_json.get('name')
+
+        new_playlist = Playlist(
+            name=name,
+            user_id=session['user_id'],
+        )
+        try:
+            db.session.add(new_playlist)
+            db.session.commit()
+            return new_playlist.to_dict(), 201
+        
+        except IntegrityError:
+            return {'error': '422 Unprocessable Entity'}, 422

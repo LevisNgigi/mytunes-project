@@ -83,3 +83,12 @@ class PlaylistByID(Resource):
         db.session.commit()
 
         return make_response(playlist.to_dict(), 200)
+    
+    def delete(self, id):
+        playlist = Playlist.query.filter_by(id=id).first()
+        if playlist:
+            db.session.delete(playlist)
+            db.session.commit()
+            return {"message": "Playlist deleted successfully."}, 204
+        else: 
+            return {"error": "Playlist not found."}, 404

@@ -29,3 +29,17 @@ class Music(Resource):
         image_url = request_json.get('imageUrl')
         genres = request_json.get('genres')       
         
+        artist = Artist(
+            name=name,
+            spotify_id=spotify_id,
+            image_url=image_url,
+            genres=genres,
+        )
+        
+        try:
+            db.session.add(artist)
+            db.session.commit()
+            return {'message' : 'Artist successfully added to database'}, 201
+        
+        except IntegrityError:
+            return {'error': '422 Unprocessable entity'}, 422

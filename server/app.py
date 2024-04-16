@@ -15,3 +15,9 @@ class Users(Resource):
     def get(self):
         users = [user.to_dict() for user in User.query.all()]
         return make_response(users, 200)  
+
+class Music(Resource):
+    def get(self):
+        music = [artist.to_dict() for artist in Artist.query.all()]
+        return make_response(music, 200) 
+       

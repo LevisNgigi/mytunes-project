@@ -1,0 +1,12 @@
+#navbar-container-wrapper {
+  background-color: #FF78A8;
+  overflow: hidden;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+/*# sourceMappingURL=NavBar.css.map */

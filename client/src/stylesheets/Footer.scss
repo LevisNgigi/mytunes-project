@@ -1,0 +1,12 @@
+@import "../utilities/variables";
+
+#footer {
+  text-align: center;
+  position: bottom;
+  bottom: 0;
+  background: $color-primary-light;
+  border: 1rem solid $color-dark-variant;
+  color: white;
+  padding: .5rem;
+  margin: 0;
+}

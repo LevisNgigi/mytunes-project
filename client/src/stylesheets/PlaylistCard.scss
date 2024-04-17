@@ -1,0 +1,74 @@
+@import "../utilities/variables";
+
+.name {
+    display: flex;
+    justify-content: space-between;
+}
+
+#expand-collapse:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.playlist-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit:hover, .delete:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.playlist-names {
+    margin: .75rem;
+}
+
+.delete-confirm {
+    display: flex;
+    justify-content: space-between;
+}
+
+#yes-delete:hover, #no-delete:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.edit-container {
+    display: flex;
+}
+
+.playlist-items {
+    padding-left: 0;
+}
+.edit-playlist {
+    padding-left: 0;
+}
+
+.edit-playlist-name {
+    display: flex;
+
+    #playlist-name {
+        margin-right: .5rem;
+    }
+
+    #edit-playlist-pencil:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}
+
+.delete-song {
+    padding-left: 1.2em;
+    padding-right: 1.2rem;
+}
+
+.delete-song:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+}

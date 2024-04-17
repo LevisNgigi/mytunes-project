@@ -1,0 +1,26 @@
+// COLOR THEME
+$color-primary: #3098B3;
+$color-bright: #FF78A8;
+$color-primary-light: #5EDFFF;
+$color-dark-variant: #FFEF45;
+$color-dark: #B3A839;
+
+$random-perc: random(150) + deg;
+
+button {
+    padding: .25rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: $color-bright;
+    font-weight: 600;
+    background-color: white;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: $color-primary-light;
+    color: white;
+    cursor: pointer;
+}

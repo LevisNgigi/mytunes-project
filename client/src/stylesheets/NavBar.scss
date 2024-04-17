@@ -1,0 +1,16 @@
+@import "../utilities/variables";
+
+#navbar-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-bright;
+    padding: .5rem;
+}
+
+#links a {
+    font-size: 1rem;
+}
+
+#welcome {
+    font-style: italic;
+}

@@ -1,0 +1,26 @@
+@import "../utilities/variables";
+
+html {
+  overscroll-behavior-x: none;
+} 
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background: linear-gradient(
+    to right,
+    white 0%,
+    white 50%,
+    $color-dark-variant 50%,
+    $color-dark-variant 100%,
+  );
+  overscroll-behavior-x: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

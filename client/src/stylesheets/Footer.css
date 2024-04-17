@@ -1,0 +1,12 @@
+#footer {
+  text-align: center;
+  position: sticky;
+  top: 100vh;
+  background: #5EDFFF;
+  border: 1rem solid #FFEF45;
+  color: white;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+/*# sourceMappingURL=Footer.css.map */

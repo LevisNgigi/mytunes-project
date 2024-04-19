@@ -8,7 +8,7 @@ function Footer() {
         <footer id="footer">
             Made with ❤️ & 🍺
             <br />
-            © Group 2{today} 
+            © Group 2 {today} 
         </footer>
     )
 }

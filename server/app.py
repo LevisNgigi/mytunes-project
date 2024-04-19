@@ -3,7 +3,7 @@ from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
 
 from config import app, db
-from model import User, Artist, Playlist, Song
+from models import User, Artist, Playlist, Song
 
 api = Api(app)
 
@@ -15,11 +15,11 @@ class Users(Resource):
     def get(self):
         users = [user.to_dict() for user in User.query.all()]
         return make_response(users, 200)  
-
+    
 class Music(Resource):
     def get(self):
         music = [artist.to_dict() for artist in Artist.query.all()]
-        return make_response(music, 200) 
+        return make_response(music, 200)
     
     def post(self):
         request_json = request.get_json()
@@ -27,15 +27,15 @@ class Music(Resource):
         name = request_json.get('name')
         spotify_id= request_json.get('spotifyId')
         image_url = request_json.get('imageUrl')
-        genres = request_json.get('genres')       
-        
+        genres = request_json.get('genres')
+
         artist = Artist(
             name=name,
             spotify_id=spotify_id,
             image_url=image_url,
             genres=genres,
         )
-        
+
         try:
             db.session.add(artist)
             db.session.commit()
@@ -43,11 +43,11 @@ class Music(Resource):
         
         except IntegrityError:
             return {'error': '422 Unprocessable entity'}, 422
-
+    
 class Playlists(Resource):
     def get(self):
         playlists = [playlist.to_dict() for playlist in Playlist.query.all()]
-        return make_response(playlists, 200)        
+        return make_response(playlists, 200)
     
     def post(self):
         request_json = request.get_json()
@@ -92,7 +92,7 @@ class PlaylistByID(Resource):
             return {"message": "Playlist deleted successfully."}, 204
         else: 
             return {"error": "Playlist not found."}, 404
-        
+
 class PlaylistSong(Resource):
     def post(self, id):
 
@@ -110,7 +110,6 @@ class PlaylistSong(Resource):
         except IntegrityError:
             return {'error': '404 Playlist or Song not found'}, 404
 
-
 class PlaylistSongByID(Resource):    
     def delete(self, songId, id):
 
@@ -123,8 +122,8 @@ class PlaylistSongByID(Resource):
             return {'message': 'Song deleted from playlist'}, 204
 
         except IntegrityError:
-            return {'error': '404 Playlist or Song not found'}, 404        
-        
+            return {'error': '404 Playlist or Song not found'}, 404
+
 class Signup(Resource):
     def post(self):
         request_json = request.get_json()
@@ -148,15 +147,15 @@ class Signup(Resource):
             session['user_id'] = user.id
             return user.to_dict(), 201
         except IntegrityError:
-            return {'error': '422 Unprocessable Entity'}, 422        
+            return {'error': '422 Unprocessable Entity'}, 422
         
 class CheckSession(Resource):
     def get(self):
         if session.get('user_id'):
             user = User.query.filter(User.id == session['user_id']).first()
             return user.to_dict(), 200
-        return {'error': '401 Unauthorized'}, 401        
-    
+        return {'error': '401 Unauthorized'}, 401
+
 class Login(Resource):
     def post(self):
 
@@ -174,7 +173,7 @@ class Login(Resource):
                 return user.to_dict(), 200
             return {'error': 'Incorrect password.'}, 401
 
-        return {'error': '401 Unauthorized'}, 401    
+        return {'error': '401 Unauthorized'}, 401
 
 class Logout(Resource):
     def delete(self):
@@ -185,9 +184,8 @@ class Logout(Resource):
             
             return {}, 204
         
-        return {'error': '401 Unauthorized'}, 401 
-   
-    
+        return {'error': '401 Unauthorized'}, 401
+
 api.add_resource(Users, '/users', endpoint='users')
 api.add_resource(Music, '/music', endpoint='music')
 api.add_resource(Playlists, '/playlists', endpoint='playlists')
@@ -197,4 +195,4 @@ api.add_resource(PlaylistSongByID, '/playlists/<int:id>/songs/<int:songId>', met
 api.add_resource(Signup, '/signup', endpoint='signup')
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(Login, '/login', endpoint='login')
-api.add_resource(Logout, '/logout', endpoint='logout')       
+api.add_resource(Logout, '/logout', endpoint='logout')

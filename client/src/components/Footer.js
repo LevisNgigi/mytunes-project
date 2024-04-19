@@ -6,9 +6,9 @@ function Footer() {
 
     return (
         <footer id="footer">
-            Made by Group 2 
+            Made with ❤️ & 🍺
             <br />
-            © 2024 Group 2. All rights reserved.{today} 
+            © Group 2{today} 
         </footer>
     )
 }

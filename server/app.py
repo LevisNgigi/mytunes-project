@@ -3,7 +3,7 @@ from flask_restful import Api, Resource
 from sqlalchemy.exc import IntegrityError
 
 from config import app, db
-from models import User, Artist, Playlist, Song
+from model import User, Artist, Playlist, Song
 
 api = Api(app)
 

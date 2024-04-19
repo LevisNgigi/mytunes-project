@@ -8,7 +8,7 @@ For local installation, fork and clone this repository, then cd into your projec
 
 `npm install --prefix client`
 
-`pipenv install requirements.txt && pipenv shell`
+`pipenv install && pipenv shell`
 
 To run both front and backend applications simultaneously, run the following command:
 

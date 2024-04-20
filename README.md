@@ -10,11 +10,13 @@ For local installation, fork and clone this repository, then cd into your projec
 
 `pipenv install && pipenv shell`
 
-To run both front and backend applications simultaneously, run the following command:
+Then cd into the server directory and run the following commands to get the backend started.
+` export FLASK_APP=app.py `
+`export FLASK_RUN_PORT=5555`
+ `flask run`
 
-`honcho start -f Procfile.dev`
-
-The React front end will be available at localhost:4000; the Flask backend will be available at localhost:5555
+For the React front end cd into the client directory and run:
+`npm start`
 
 ## Usage
 

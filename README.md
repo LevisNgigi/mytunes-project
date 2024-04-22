@@ -30,6 +30,10 @@ To edit playlists, click the + sign next to the playlist name to expand a playli
 
 To listen to a song, click the + sign next to the playlist name to expand a playlist, then click the music icon next to a song to open a new tab in Spotify.
 
+## Deployment
+ Backend is deployed at [Backend](https://backend-i16n.onrender.com)
+ Frontend is deployed at [Frontend](https://frontend-1-1nzq.onrender.com)
+
 ## Resources
 
 Artist and song data accessed through the Spotify API: [Spotify Developer API](https://developer.spotify.com/documentation/web-api)

@@ -32,7 +32,7 @@ To listen to a song, click the + sign next to the playlist name to expand a play
 
 ## Deployment
  Backend is deployed at [Backend](https://backend-i16n.onrender.com)
- Frontend is deployed at [Frontend](https://frontend-1-1nzq.onrender.com)
+ Frontend is deployed at [Frontend](https://frontend-i13z.onrender.com/)
 
 ## Resources
 
